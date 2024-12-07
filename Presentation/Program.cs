@@ -1,5 +1,4 @@
-﻿using Core.Models;
-using DataAccess.ListAndMethods;
+﻿using DataAccess.ListAndMethods;
 
 namespace Presentation
 {
@@ -7,23 +6,37 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
+
             while (true)
             {
-                Product.inputString = Console.ReadLine();
-                Product.isValidInput = int.TryParse(Product.inputString, out Product.inputNumber);
-                if (Product.isValidInput)
+                ListsAndMethods.SetMenu();
+                string stringMenu = Console.ReadLine();
+                bool isValidInput = int.TryParse(stringMenu, out int intMenu);
+                if (isValidInput && intMenu > 0 && intMenu <= 9)
                 {
-                    switch (Product.inputNumber)
+                    switch (intMenu)
                     {
-                        case 0:
+                        case 1:
                             {
-
-                            }return;
-                        default:
+                                ListsAndMethods.AddBook();
+                            }
+                            break;
+                        case 2:
                             {
-                                Console.WriteLine("enter valid option!");
-                            }break;
+                                ListsAndMethods.FindBook();
+                            }
+                            break;
                     }
+                }
+                else if (isValidInput && intMenu == 0)
+                {
+                    Console.WriteLine("!!!!!!the program ended!!!!!!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("please enter valid menu!");
+                    Console.ReadKey();
                 }
             }
         }
