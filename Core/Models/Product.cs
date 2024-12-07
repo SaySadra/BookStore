@@ -9,20 +9,17 @@ namespace Core.Models
 {
     public class Product
     {
+
         public string Name { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public string ISBN { get; set; }
 
-        public Product(string name, int price, string isbn)
+        public Product(string name, double price, string isbn)
         {
             Name = name;
             Price = price;
             ISBN = isbn;
         }
-
-        public static string inputString;
-        public static int inputNumber;
-        public static bool isValidInput;
 
     }
 }
