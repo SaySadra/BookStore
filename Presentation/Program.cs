@@ -30,6 +30,10 @@ namespace Presentation
                             {
                                 ListsAndMethods.ShowAllBooks();
                             }break;
+                        case 4:
+                            {
+                                ListsAndMethods.RemoveByISBN();
+                            }break;
                     }
                 }
                 else if (isValidInput && intMenu == 0)

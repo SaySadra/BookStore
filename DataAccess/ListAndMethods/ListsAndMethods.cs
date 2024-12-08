@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Models;
+﻿using Core.Models;
 
 namespace DataAccess.ListAndMethods
 {
@@ -48,13 +43,14 @@ namespace DataAccess.ListAndMethods
         {
             Console.Write("please enter the name of book : ");
             string findName = Console.ReadLine();
-            if(books.Count > 0)
+            if (books.Count > 0)
             {
                 foreach (Product book in books)
                 {
                     if (book.Name == findName)
                     {
                         Console.WriteLine("name {0}, price {1}, isbn {2}", book.Name, book.Price, book.ISBN);
+                        break;
                     }
                     else
                     {
@@ -77,7 +73,7 @@ namespace DataAccess.ListAndMethods
                 foreach (Product book in books)
                 {
 
-                    Console.WriteLine("book {0} ===> name: {1}   price: {2}   isbn: {3}",counter, book.Name, book.Price, book.ISBN);
+                    Console.WriteLine("book {0} ===> name: {1}   price: {2}   isbn: {3}", counter, book.Name, book.Price, book.ISBN);
                     counter++;
                 }
             }
@@ -87,6 +83,32 @@ namespace DataAccess.ListAndMethods
             }
             Console.ReadKey();
         }
-
+        public static void RemoveByISBN()
+        {
+            if (books.Count > 0)
+            {
+                Console.Write("enter isbn of book: ");
+                string removeISBN = Console.ReadLine();
+                foreach (Product book in books)
+                {
+                    if (book._ISBN == removeISBN)
+                    {
+                        books.Remove(book);
+                        Console.WriteLine("the book removed!");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("this isbn not available!");
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("the list is empty!");
+            }
+            Console.ReadKey();
+        }
     }
 }
