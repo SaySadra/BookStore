@@ -26,6 +26,10 @@ namespace Presentation
                                 ListsAndMethods.FindBook();
                             }
                             break;
+                        case 3:
+                            {
+                                ListsAndMethods.ShowAllBooks();
+                            }break;
                     }
                 }
                 else if (isValidInput && intMenu == 0)

@@ -9,7 +9,7 @@ namespace DataAccess.ListAndMethods
 {
     public class ListsAndMethods
     {
-        public static List<Product> books = new List<Product>();
+        static List<Product> books = new List<Product>();
         public static void SetMenu()
         {
             Console.Clear();
@@ -69,5 +69,24 @@ namespace DataAccess.ListAndMethods
             }
             Console.ReadKey();
         }
+        public static void ShowAllBooks()
+        {
+            if (books.Count > 0)
+            {
+                int counter = 1;
+                foreach (Product book in books)
+                {
+
+                    Console.WriteLine("book {0} ===> name: {1}   price: {2}   isbn: {3}",counter, book.Name, book.Price, book.ISBN);
+                    counter++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("the list is empty!");
+            }
+            Console.ReadKey();
+        }
+
     }
 }
