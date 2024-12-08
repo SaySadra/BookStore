@@ -1,25 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
     public class Product
     {
-
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public string ISBN { get; set; }
-
+        public string _name;
+        public double _price;
+        public string _isbn;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+        public double Price
+        {
+            get
+            {
+                return _price;
+            }
+            set
+            {
+                _price = value;
+            }
+        }
+        public string ISBN
+        {
+            get
+            {
+                return _isbn;
+            }
+            set
+            {
+                _isbn = value;
+            }
+        }
         public Product(string name, double price, string isbn)
         {
-            Name = name;
-            Price = price;
-            ISBN = isbn;
+            _name = name;
+            _price = price;
+            _isbn = isbn;
         }
-
     }
 }
