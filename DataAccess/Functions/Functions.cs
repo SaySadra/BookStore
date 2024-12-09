@@ -25,19 +25,23 @@ namespace DataAccess.Functions
         {
             Console.Write("Enter Name : ");
             string stringName = Console.ReadLine();
+            while (!(stringName.Length <= 10))
+            {
+                Console.WriteLine("your input is not valid! (your name must be lower than 20 char)");
+                Console.Write("Enter Name : ");
+                stringName = Console.ReadLine();
+            }
             Console.Write("Enter price : ");
-            string stringPrice = Console.ReadLine();
+            double doublePrice;
+            while (!double.TryParse(Console.ReadLine(), out doublePrice) || doublePrice < 0)
+            {
+                Console.WriteLine("please enter valid Price!");
+                Console.Write("Enter price : ");
+            }
             Console.Write("Enter isbn : ");
             string stringISBN = Console.ReadLine();
-            if (double.TryParse(stringPrice, out double doublePrice))
-            {
-                books.Add(new Products(stringName, doublePrice, stringISBN));
-                Console.WriteLine("the book succesfully added!");
-            }
-            else
-            {
-                Console.WriteLine("please enter valid book!");
-            }
+            books.Add(new Products(stringName, doublePrice, stringISBN));
+            Console.WriteLine("the book succesfully added!");
             Console.ReadKey();
         }
         public static void FindBook()
@@ -63,6 +67,7 @@ namespace DataAccess.Functions
                     break;
                 }
             }
+            Console.ReadKey();
         }
         public static void ShowAllBooks()
         {
@@ -107,7 +112,7 @@ namespace DataAccess.Functions
                     break;
                 }
             }
-
+            Console.ReadKey();
         }
         public static void ShowExpensive()
         {
@@ -183,6 +188,52 @@ namespace DataAccess.Functions
                 Console.WriteLine("book {0} ===> name: {1}   price: {2}   isbn: {3}", counter, book.Name, book.Price, book.ISBN);
                 counter++;
             }
+            Console.ReadKey();
+        }
+        public static void ShowBooksBetweenTwoPrice()
+        {
+            if (books.Count == 0)
+            {
+                Console.WriteLine("the list is empty!");
+                Console.ReadKey();
+                return;
+            }
+            double minPrice;
+            Console.Write("enter minimum price: ");
+            while (!double.TryParse(Console.ReadLine(), out minPrice) || minPrice < 0)
+            {
+                Console.WriteLine("please enter positive input!");
+                Console.Write("enter minimum price: ");
+            }
+            double maxPrice;
+            Console.Write("enter maximum price: ");
+            while (!double.TryParse(Console.ReadLine(), out maxPrice)|| maxPrice < minPrice)
+            {
+                Console.WriteLine("Invalid input. Maximum price must be greater than or equal to the minimum price: ");
+                Console.Write("enter maximum price: ");
+            }
+            var bookInRange = new List<Products>();
+            foreach(var book in books)
+            {
+                if (book.Price >= minPrice && book.Price <= maxPrice)
+                {
+                    bookInRange.Add(book);
+                }
+            }
+            if (bookInRange.Count > 0)
+            {
+                int counter = 1;
+                foreach (var book in bookInRange)
+                {
+                    Console.WriteLine("book {0} ===> name: {1}   price: {2}   isbn: {3}", counter, book.Name, book.Price, book.ISBN);
+                    counter++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No books found in this price range.");
+            }
+
             Console.ReadKey();
         }
     }

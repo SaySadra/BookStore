@@ -50,6 +50,10 @@ namespace Presentation
                             {
                                 Functions.SortByPrice();
                             }break;
+                        case 9:
+                            {
+                                Functions.ShowBooksBetweenTwoPrice();
+                            }break;
                     }
                 }
                 else if (isValidInput && intMenu == 0)
