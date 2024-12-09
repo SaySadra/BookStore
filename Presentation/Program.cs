@@ -1,4 +1,4 @@
-﻿using DataAccess.ListAndMethods;
+﻿using DataAccess.Functions;
 
 namespace Presentation
 {
@@ -9,7 +9,7 @@ namespace Presentation
 
             while (true)
             {
-                ListsAndMethods.SetMenu();
+                Functions.SetMenu();
                 string stringMenu = Console.ReadLine();
                 bool isValidInput = int.TryParse(stringMenu, out int intMenu);
                 if (isValidInput && intMenu > 0 && intMenu <= 9)
@@ -18,21 +18,37 @@ namespace Presentation
                     {
                         case 1:
                             {
-                                ListsAndMethods.AddBook();
+                                Functions.AddBook();
                             }
                             break;
                         case 2:
                             {
-                                ListsAndMethods.FindBook();
+                                Functions.FindBook();
                             }
                             break;
                         case 3:
                             {
-                                ListsAndMethods.ShowAllBooks();
+                                Functions.ShowAllBooks();
                             }break;
                         case 4:
                             {
-                                ListsAndMethods.RemoveByISBN();
+                                Functions.RemoveByISBN();
+                            }break;
+                        case 5:
+                            {
+                                Functions.ShowExpensive();
+                            }break;
+                        case 6:
+                            {
+                                Functions.ShowCheapest();
+                            }break;
+                        case 7:
+                            {
+                                Functions.ShowCountBooks();
+                            }break;
+                        case 8:
+                            {
+                                Functions.SortByPrice();
                             }break;
                     }
                 }
